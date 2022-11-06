@@ -1,6 +1,3 @@
-
-// https://github.com/EvgeniiMal/HTML-builder/tree/main/05-merge-styles
-
 const fs = require('fs');
 
 const pathCopyFrom = __dirname + '\\styles\\';
