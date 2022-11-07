@@ -1,13 +1,14 @@
 // https://github.com/Albedo-13/HTML-builder/tree/HTML-builder/06-build-page
 // https://github.com/EvgeniiMal/HTML-builder/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-06-build-page
 // https://bobbyhadz.com/blog/node-js-replace-string-in-file
-
+// https://learn.javascript.ru/async-await
 
 
 //! КОД НЕ РАБОТАЕТ! МОЖНО НЕ ПРОВЕРЯТЬ!
 
+
 // Закоммитил, чтобы не потерять. Застрял на вставке компонентов в
-// .html макет. Нужно на строке 67 сделать асинхронный цикл 
+// .html макет. Нужно на строке 68 сделать асинхронный цикл 
 // синхронным через async/await, чтобы повторить поведение
 // закомментированного кода в самом низу.
 // Думаю из-за асинхронности периодически и выдает ошибку, что 
