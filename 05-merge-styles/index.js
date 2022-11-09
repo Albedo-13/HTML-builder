@@ -1,15 +1,16 @@
 const fs = require('fs');
+const path = require('path');
 
-const pathCopyFrom = __dirname + '\\styles\\';
-const pathCopyTo = __dirname + '\\project-dist\\';
+const pathCopyFrom = path.join(__dirname, 'styles');
+const pathCopyTo = path.join(__dirname, 'project-dist');
 let content = "";
 
 fs.readdir(pathCopyFrom, { withFileTypes: true }, (err, files) => {
   files.forEach(file => {
     if (file.isFile() && file.name.match(/.\w+$/i)[0].slice(1) === "css") {
-      fs.readFile(`${pathCopyFrom}\\${file.name}`, 'utf8', (err, data) => {
+      fs.readFile(path.join(pathCopyFrom, file.name), 'utf8', (err, data) => {
         content += data;
-        fs.writeFile(`${pathCopyTo}\\bundle.css`, content, () => { });
+        fs.writeFile(path.join(pathCopyTo, "bundle.css"), content, () => { });
       });
     }
   });
