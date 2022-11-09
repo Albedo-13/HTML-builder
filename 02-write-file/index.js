@@ -1,25 +1,17 @@
 const fs = require('fs');
+const path = require('path');
 
-let writeStream = fs.createWriteStream('02-write-file/text.txt', 'utf8');
-console.log("Файл открыт для записи");
+const { stdin, stdout } = process;
 
-const rl = require('readline').createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+stdout.write('Файл открыт для записи\n');
+stdin.on('data', data => writeTo(data));
+process.on('exit', () => stdout.write('Запись в файл завершена.'));
 
-process.stdin.on('data', data => {
-  writeStream.write(data.toString());
-});
-
-rl.on('line', (line) => {
-  if (line.match(/^exit$/i)) {
-    console.log("Произведена запись в файл. Завершаем работу");
-    process.exit();
-  }
-});
-
-rl.on('SIGINT', () => {
-  console.log("Произведена запись в файл. Завершаем работу");
-  process.exit();
-});
+function writeTo (data) {
+    const buffer = Buffer.from(data, 'utf8');
+    if (buffer.toString().trim() == 'exit') {
+        process.exit();
+    }
+    
+    fs.appendFile(path.join(__dirname, 'text.txt'), data, () => { });
+}
